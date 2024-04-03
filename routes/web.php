@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/my-name', function () {
-    echo "Nama saya adalah Kesyza";
-});
-
-Route::get('/my-city/{param}', function ($city) {
-    echo "Saya berasal dari " .$city;
-});
-
-Route::get('/my-fullname/{nama}/{nrp}', function ($nama, $nrp) {
-    echo "Nama saya " .$nama ." dan NRP saya " .$nrp;
-});
+Route::get('/customer/name', [CustomerController::class, 'name']);
+Route::get('/customer/city/{param}', [CustomerController::class, 'city']);
+Route::get('/customer/my-fullname/{nama}/{nrp}', [CustomerController::class, 'fullname']);
