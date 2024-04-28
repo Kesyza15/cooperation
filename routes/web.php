@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::get('/', function () {
 Route::get('/customer/name', [CustomerController::class, 'name']);
 Route::get('/customer/city/{param}', [CustomerController::class, 'city']);
 Route::get('/customer/my-fullname/{nama}/{nrp}', [CustomerController::class, 'fullname']);
+
+Route::get('/person/index', [PersonController::class, 'index']);
