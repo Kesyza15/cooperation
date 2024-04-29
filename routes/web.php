@@ -24,3 +24,5 @@ Route::get('/customer/city/{param}', [CustomerController::class, 'city']);
 Route::get('/customer/my-fullname/{nama}/{nrp}', [CustomerController::class, 'fullname']);
 
 Route::get('/person/index', [PersonController::class, 'index']);
+Route::get('/person/create', [PersonController::class, 'create'])->name('person.create');
+Route::post('/person/store', [PersonController::class, 'store'])->name('person.store');
