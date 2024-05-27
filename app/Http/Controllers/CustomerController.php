@@ -3,18 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function name() {
-        echo "Kesyza Andriana Hartuti";
+    public function create() {
+        return view('customers.create');
     }
 
-    public function city($city) {
-        echo $city;
-    }
+    public function store(Request $request) {
+        $this->validate($request, [
+            'code' => 'required|unique:customers|max:4',
+            'name' => 'required|max:30',
+            'phone' => 'numeric',
+            'address' => 'required'
+        ]);
 
-    public function fullname($name, $nrp) {
-        echo "Nama Saya " .$name ." NRP Saya " .$nrp;
+        $customer = new Customer();
+        $customer->code = $request->code;
+        $customer->name = $request->name;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+
+        $customer->save();
     }
 }
