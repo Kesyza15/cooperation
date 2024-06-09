@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1>Selamat Datang Di Web Koperasi</h1>
+    <h1><center>Selamat Datang Di Web Koperasi</center></h1>
 @endsection

@@ -15,7 +15,7 @@ class CustomerController extends Controller
         $this->validate($request, [
             'code' => 'required|unique:customers|max:4',
             'name' => 'required|max:30',
-            'phone' => 'numeric',
+            'phone' => 'max:15',
             'address' => 'required'
         ]);
 
@@ -25,6 +25,22 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->address = $request->address;
 
-        $customer->save();
+        if($customer->save()) {
+            return redirect()->route('customers.show', $customer->id);
+        } else {
+            dd("Data nasabah gagal disimpan");
+        }
+    }
+
+    public function show($id) {
+        $customer = Customer::find($id);
+
+        return view('customers.show', compact('customer'));
+    }
+
+    public function index() {
+        $customers = Customer::all();
+
+        return view('customers.index', compact('customers'));
     }
 }

@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('customers.store');
+Route::get('/customer/{id}', [CustomerController::class, 'show'])->name('customers.show');
+Route::get('/customer', [CustomerController::class, 'index'])->name('customers.index');
 
 // Route::get('/customer/name', [CustomerController::class, 'name']);
 // Route::get('/customer/city/{param}', [CustomerController::class, 'city']);
