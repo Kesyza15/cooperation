@@ -1,6 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
+
+@if ($messege = Session::get('success'))
+    <div class="alert alert-success mb-1">
+        <p>{{ $messege }}</p>
+    </div>
+@endif
+
     <div class="m-2">
         <h1>Data Nasabah</h1>
         <table class="table">

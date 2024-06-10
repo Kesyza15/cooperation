@@ -26,7 +26,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
 
         if($customer->save()) {
-            return redirect()->route('customers.show', $customer->id);
+            return redirect()->route('customers.show', $customer->id)->with('success', "Data nasabah $customer->code berhasil ditambah");
         } else {
             dd("Data nasabah gagal disimpan");
         }
@@ -43,4 +43,39 @@ class CustomerController extends Controller
 
         return view('customers.index', compact('customers'));
     }
+
+    public function edit($id) {
+        $customer = Customer::find($id);
+
+        return view('customers.edit', compact('customer'));
+    }
+
+    public function update(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'phone' => 'max:15',
+            'address' => 'required'
+        ]);
+
+        $customer = Customer::find($request->id);
+        $customer->name = $request->name;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
+
+        if($customer->save()) {
+            return redirect()->route('customers.index')->with('success', "Data nasabah $customer->code berhasil diubah");
+        } else {
+            dd("Data nasabah gagal diubah");
+        }
+    }
+
+    public function destroy($id) {
+        $customer = Customer::find($id);
+    
+        if($customer->delete()) {
+            return redirect()->route('customers.index')->with('success', "Data nasabah berhasil dihapus");
+        } else {
+            dd("Data nasabah gagal dihapus");
+        }
+    }    
 }
