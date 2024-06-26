@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('customers.index') }}">Nasabah</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('mandatory-saving.index') }}">Simpanan Wajib</a>
+          </li>
         </ul>
       </div>
     </div>

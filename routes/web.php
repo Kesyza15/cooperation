@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MandatorySavingController;
 use App\Http\Controllers\PersonController;
+use App\Models\MandatorySaving;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,8 @@ Route::get('/customer', [CustomerController::class, 'index'])->name('customers.i
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::put('/customer/update', [CustomerController::class, 'update'])->name('customers.update');
 Route::delete('/customer/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+
+Route::resource('mandatory-saving', MandatorySavingController::class);
 
 // Route::get('/customer/name', [CustomerController::class, 'name']);
 // Route::get('/customer/city/{param}', [CustomerController::class, 'city']);
